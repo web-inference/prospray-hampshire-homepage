@@ -24,7 +24,7 @@ Buttons: gold = #E0B13A bg, #121212 text, 52px high, 8px radius (dark text on go
 ## Section → native widget map
 | # | Section | Widgets |
 |---|---|---|
-| – | Top bar + Header (Theme Builder) | Container, Icon List, Image (logo), Nav Menu (mega menu: Pro "Mega Menu" or Nav Menu dropdown), Button, sticky |
+| – | Header (Theme Builder). Top bar removed | Container, Icon List, Image (logo), Nav Menu (mega menu: Pro "Mega Menu" or Nav Menu dropdown), Button, sticky |
 | 1 | Hero | Container (2 col), Heading H1 (3 lines), Text Editor, Button ×2, Icon List (pills), Image ×2, Icon Box (floating chip) |
 | 2 | Trust bar | Container (4 col, gold bg), Icon Box ×4 |
 | 3 | Services tiles | Container grid 3×2, Container with bg image + overlay gradient + Heading + Text + Button, link whole container |
@@ -47,7 +47,7 @@ Custom CSS needed (Site Settings → Custom CSS): tape corners (`.tape`), tile o
 Upload to the Media Library and convert to WebP (e.g. via ShortPixel/Imagify) before launch.
 
 ## Items to confirm with the client (placed in the design, not verified)
-1. **10-year guarantee** – from the mockup; the live site makes no guarantee claim. Get written terms.
+1. **Guarantee** – the mockup said "10 Year Guarantee" but the live site makes no guarantee claim, so it was removed from the page. Add it back (hero pill, trust bar, process step 4, FAQ) only after the client confirms the terms in writing.
 2. **Front door price** – mockup says £300, live site says "from £250". Page uses £250.
 3. **Mockup list item "Full Gates £300"** – unclear (probably "Tail gates"). Left out.
 4. **Bi-fold doors £150 per section** – from the mockup; added.

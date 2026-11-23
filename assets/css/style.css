@@ -105,9 +105,9 @@ p { text-wrap: pretty; }
 .topbar__social { display: flex; gap: 14px; }
 
 /* ---------- Header ---------- */
-.header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,.07); }
+.header { position: sticky; top: 0; z-index: 50; }
 /* blur lives on a pseudo-element so it does not trap the fixed mobile menu */
-.header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(28, 29, 32, .94); backdrop-filter: blur(10px); }
+.header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(28, 29, 32, .94); backdrop-filter: blur(10px); box-shadow: inset 0 -1px 0 rgba(255,255,255,.05); }
 .header__in { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 84px; }
 /* The logo file is square with transparent padding. The file is untouched; CSS just frames the visible artwork. */
 .logo-crop { position: relative; display: block; overflow: hidden; height: 60px; aspect-ratio: 1119 / 456; }
