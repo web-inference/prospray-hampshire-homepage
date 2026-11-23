@@ -138,6 +138,28 @@
     if (e.key === 'ArrowRight') step(1);
   });
 
+
+  /* ---------- Soft entrance animations + header scroll state ---------- */
+  (function () {
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-anim]'));
+    // stagger siblings inside [data-stagger] containers (90ms steps, capped)
+    document.querySelectorAll('[data-stagger]').forEach(function (g) {
+      var kids = Array.prototype.slice.call(g.children).filter(function (c) { return c.hasAttribute('data-anim'); });
+      kids.forEach(function (c, i) { if (!c.style.getPropertyValue('--d')) c.style.setProperty('--d', Math.min(i * 0.09, 0.45) + 's'); });
+    });
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.style.opacity = 1; });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    }
+    var header = document.querySelector('.header');
+    function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  })();
+
   /* ---------- Form (preview only) ---------- */
   var form = document.getElementById('quoteForm');
   form.addEventListener('submit', function (e) {

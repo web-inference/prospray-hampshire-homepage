@@ -58,3 +58,40 @@ Upload to the Media Library and convert to WebP (e.g. via ShortPixel/Imagify) be
 9. **Reviews** – the 4 testimonials come from the live site and are about kitchens. Replace with Google reviews and a rating badge.
 10. **Before/after** – only one clean pair (red Kia) in the photos. Ask for matched pairs per service.
 11. **WhatsApp and Instagram links** – set to `#`.
+
+## Soft scroll animations (all native Elementor Pro settings)
+The preview uses the same animation names Elementor has, so nothing extra is needed beyond one small CSS paste.
+
+**1. Paste once in Site Settings → Custom CSS.** Elementor's default Fade In Up slides a long way; this makes it a short, soft 24px move, and sets calmer speeds:
+```css
+@keyframes fadeInUp { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+.animated        { animation-duration: .8s; animation-timing-function: cubic-bezier(.22,.7,.2,1); }
+.animated-slow   { animation-duration: 1s; }
+.animated-fast   { animation-duration: .5s; }
+@media (prefers-reduced-motion: reduce) { .animated { animation: none !important; } .elementor-invisible { visibility: visible !important; } }
+```
+
+**2. On each element:** Advanced → Motion Effects → Entrance Animation, then pick the type below. Leave Animation Duration on Normal (the CSS above sets it).
+
+| Where | Entrance Animation | Animation Delay |
+|---|---|---|
+| Section heading blocks (kicker + H2 + text) | Fade In Up | 0 |
+| Service tiles (6) | Fade In Up | 0, 90, 180, 0, 90, 180 ms |
+| Trust bar items (4) | Fade In | 0, 90, 180, 270 ms |
+| Household cards (4), process steps (4), reviews (4) | Fade In Up | 0, 90, 180, 270 ms |
+| Videos (3) | Fade In Up | 0, 90, 180 ms |
+| Vehicles text, then price list / before-after column | Fade In Up | 0, then 120 ms |
+| Pricing intro, then price table | Fade In Up | 0, then 100 ms |
+| Door before/after pair | Fade In Up | 150 ms |
+| Areas copy, then dark card | Fade In Up | 0, then 120 ms |
+| FAQ intro, then accordion | Fade In Up | 0, then 100 ms |
+| Contact list, then form | Fade In Up | 0, then 100 ms |
+| Gallery filters | Fade In | 0 |
+| Hero (badge, H1 lines, text, buttons, image, cards) | Fade In Up | 80 ms steps from 0 to 640 ms |
+
+Don't animate the header, footer or the mobile call bar.
+
+**3. Sticky header (Elementor Pro):** Header container → Advanced → Motion Effects → Sticky: Top. Turn on Sticky Effects → Effects Offset 40px. Set the container Min Height to 84px (normal) and 70px (Sticky Effects), logo height 60px and 50px, and a soft box shadow on scroll: `0 10px 28px -14px rgba(0,0,0,.55)`.
+
+Keep it this light. Do not add Scrolling Effects (parallax), rotate or scale effects.
