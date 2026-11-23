@@ -548,4 +548,5 @@ p { text-wrap: pretty; }
 .trust__item .ico-fa { width: 40px; flex: none; text-align: center; }
 .trust__item strong { font-size: .98rem; white-space: nowrap; }
 .trust__item span { white-space: nowrap; }
-@media (max-width: 1200px) { .trust__item strong, .trust__item span { white-space: normal; } }
+@media (max-width: 1400px) { .trust__item { padding: 26px 16px; gap: 12px; } .trust__item .ico-fa { width: 34px; font-size: 1.7rem; } .trust__item strong { font-size: .92rem; } .trust__item span { font-size: .84rem; } }
+@media (max-width: 1100px) { .trust__item strong, .trust__item span { white-space: normal; } }
