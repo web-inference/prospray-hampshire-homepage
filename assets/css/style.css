@@ -616,3 +616,7 @@ p { text-wrap: pretty; }
 .consent--dark { margin-top: 12px; text-align: left; color: #8e8e8b; }
 .consent--dark a { color: var(--c-gold-bright); }
 @media (max-width: 767px) { .legal { gap: 8px 20px; } }
+
+/* Consent line sits above the submit button */
+.form > .consent--form { margin: 16px 0 0; text-align: left; }
+.form .consent--form + .btn { margin-top: 10px; }

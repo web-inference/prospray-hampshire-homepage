@@ -112,3 +112,5 @@ Also required by UK law on a company website: the registered company name, **com
 
 Optional, low priority: an Accessibility statement.
 Slogan "Because quality matters" removed (it came from the mockup, not the live site).
+
+Contact form consent: the line "By sending this form you agree to our Privacy Policy" sits directly above the submit button. In Elementor, the native way is a Form **Acceptance** field (checkbox) with the same wording and a link to the Privacy Policy page, placed above the button.
