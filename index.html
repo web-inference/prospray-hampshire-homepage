@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="assets/css/style.css?v=24">
+<link rel="stylesheet" href="assets/css/style.css?v=27">
 </head>
 <body>
 
@@ -431,8 +431,8 @@
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
         <div class="field"><label for="f-post">Address or postcode</label><input id="f-post" name="postcode" type="text" autocomplete="postal-code"></div>
-        <div class="field field--full"><label for="f-service">Service</label>
-          <select id="f-service" name="service">
+        <div class="field field--full"><label for="f-service" id="f-service-label">Service</label>
+          <select id="f-service" name="service" data-custom>
             <option>UPVC windows and doors</option>
             <option>Garage doors and gates</option>
             <option>Kitchens and joinery</option>
@@ -496,6 +496,6 @@
   <button class="lightbox__next" aria-label="Next photo"><svg class="ico"><use href="#i-right"/></svg></button>
 </div>
 
-<script src="assets/js/main.js?v=3"></script>
+<script src="assets/js/main.js?v=4"></script>
 </body>
 </html>

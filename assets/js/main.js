@@ -160,6 +160,66 @@
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   })();
 
+  /* ---------- Custom select (enhances <select data-custom>; the native select stays for form submit) ---------- */
+  document.querySelectorAll('select[data-custom]').forEach(function (sel) {
+    var wrap = document.createElement('div'); wrap.className = 'cselect';
+    sel.parentNode.insertBefore(wrap, sel); wrap.appendChild(sel);
+    sel.tabIndex = -1; sel.setAttribute('aria-hidden', 'true');
+    var labelId = sel.id + '-label';
+    var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'cselect__btn';
+    btn.setAttribute('aria-haspopup', 'listbox'); btn.setAttribute('aria-expanded', 'false');
+    btn.id = sel.id + '-btn';
+    if (document.getElementById(labelId)) btn.setAttribute('aria-labelledby', labelId + ' ' + btn.id);
+    var txt = document.createElement('span');
+    var chev = document.createElement('i'); chev.className = 'fa-solid fa-chevron-down cselect__chev'; chev.setAttribute('aria-hidden', 'true');
+    btn.appendChild(txt); btn.appendChild(chev);
+    var list = document.createElement('ul'); list.className = 'cselect__list'; list.setAttribute('role', 'listbox'); list.tabIndex = -1;
+    var items = [], active = -1, typed = '', typedTimer;
+    Array.prototype.forEach.call(sel.options, function (o, i) {
+      var li = document.createElement('li'); li.className = 'cselect__opt'; li.setAttribute('role', 'option'); li.id = sel.id + '-o' + i;
+      var s = document.createElement('span'); s.textContent = o.textContent;
+      var ck = document.createElement('i'); ck.className = 'fa-solid fa-check'; ck.setAttribute('aria-hidden', 'true');
+      li.appendChild(s); li.appendChild(ck); list.appendChild(li); items.push(li);
+    });
+    wrap.appendChild(btn); wrap.appendChild(list);
+    function sync() {
+      txt.textContent = sel.options[sel.selectedIndex].textContent;
+      items.forEach(function (li, i) { li.setAttribute('aria-selected', i === sel.selectedIndex ? 'true' : 'false'); });
+    }
+    function setActive(i) {
+      active = Math.max(0, Math.min(items.length - 1, i));
+      items.forEach(function (li, k) { li.classList.toggle('is-active', k === active); });
+      btn.setAttribute('aria-activedescendant', items[active].id);
+      var it = items[active], top = it.offsetTop, bot = top + it.offsetHeight;
+      if (top < list.scrollTop) list.scrollTop = top - 6;
+      else if (bot > list.scrollTop + list.clientHeight) list.scrollTop = bot - list.clientHeight + 6;
+    }
+    function open() { wrap.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); setActive(sel.selectedIndex); }
+    function close(focus) { wrap.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); btn.removeAttribute('aria-activedescendant'); if (focus) btn.focus(); }
+    function choose(i) { sel.selectedIndex = i; sel.dispatchEvent(new Event('change', { bubbles: true })); sync(); close(true); }
+    btn.addEventListener('click', function () { if (wrap.classList.contains('is-open')) close(); else open(); });
+    items.forEach(function (li, i) {
+      li.addEventListener('mouseenter', function () { setActive(i); });
+      li.addEventListener('mousedown', function (e) { e.preventDefault(); });
+      li.addEventListener('click', function () { choose(i); });
+    });
+    btn.addEventListener('keydown', function (e) {
+      var isOpen = wrap.classList.contains('is-open');
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!isOpen) open(); else setActive(active + (e.key === 'ArrowDown' ? 1 : -1)); }
+      else if (e.key === 'Home' && isOpen) { e.preventDefault(); setActive(0); }
+      else if (e.key === 'End' && isOpen) { e.preventDefault(); setActive(items.length - 1); }
+      else if ((e.key === 'Enter' || e.key === ' ') && isOpen) { e.preventDefault(); choose(active); }
+      else if (e.key === 'Escape' && isOpen) { e.preventDefault(); close(true); }
+      else if (e.key === 'Tab' && isOpen) { close(); }
+      else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && e.key !== ' ') {
+        typed += e.key.toLowerCase(); clearTimeout(typedTimer); typedTimer = setTimeout(function () { typed = ''; }, 600);
+        for (var k = 0; k < items.length; k++) { if (items[k].textContent.toLowerCase().indexOf(typed) === 0) { if (!isOpen) open(); setActive(k); break; } }
+      }
+    });
+    document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) close(); });
+    sync();
+  });
+
   /* ---------- Form (preview only) ---------- */
   var form = document.getElementById('quoteForm');
   form.addEventListener('submit', function (e) {

@@ -95,3 +95,9 @@ Don't animate the header, footer or the mobile call bar.
 **3. Sticky header (Elementor Pro):** Header container → Advanced → Motion Effects → Sticky: Top. Turn on Sticky Effects → Effects Offset 40px. Set the container Min Height to 84px (normal) and 70px (Sticky Effects), logo height 60px and 50px, and a soft box shadow on scroll: `0 10px 28px -14px rgba(0,0,0,.55)`.
 
 Keep it this light. Do not add Scrolling Effects (parallax), rotate or scale effects.
+
+## Service dropdown (custom select)
+Browsers draw the open list of a normal `<select>` themselves, so neither CSS nor Elementor can restyle it. The preview keeps a real `<select>` for the form and shows a styled list on top.
+- **Closed field:** style it natively in Form → Style → Fields (background #F4F4F1, radius 8px, height 52px, focus border #B58A1F).
+- **Open list:** Elementor Pro → Custom Code, add the "Custom select" block from `assets/js/main.js` (the code that starts with `select[data-custom]`) in the footer, change its selector to `.elementor-field-type-select select`, and paste the `.cselect…` rules from the end of `assets/css/style.css` into Site Settings → Custom CSS.
+- If you skip this, the Form widget still works; only the open list looks like the browser default.
