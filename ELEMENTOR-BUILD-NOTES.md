@@ -57,7 +57,7 @@ Upload to the Media Library and convert to WebP (e.g. via ShortPixel/Imagify) be
 8. **Alloy wheel and kitchen photos** – none supplied, so those tiles use other images.
 9. **Reviews** – the 4 testimonials come from the live site and are about kitchens. Replace with Google reviews and a rating badge.
 10. **Before/after** – only one clean pair (red Kia) in the photos. Ask for matched pairs per service.
-11. **WhatsApp and Instagram links** – set to `#`.
+11. **WhatsApp and Instagram links** – taken from the live site (wa.me/message/YFLSQCJDORH6G1 and instagram.com/prosprayhampshire). Confirm they are still current.
 
 ## Soft scroll animations (all native Elementor Pro settings)
 The preview uses the same animation names Elementor has, so nothing extra is needed beyond one small CSS paste.
