@@ -36,7 +36,7 @@ Buttons: gold = #E0B13A bg, #121212 text, 52px high, 8px radius (dark text on go
 | 9 | Reviews | **Reviews** / Testimonial Carousel (replace with Google reviews) |
 | 10 | FAQ | **Accordion** widget with FAQ schema on |
 | 11 | CTA band | Container (dark + gradient), Heading, Text, Button, Icon List |
-| 12 | Contact | **Form** widget (File Upload field) + Icon List |
+| 12 | Contact | **Form** widget (name, phone, email, postcode, service, message) + Icon List |
 | – | Footer (Theme Builder) | Container 4 col, Image, Nav Menu ×2, Icon List, Social Icons, Form (newsletter) |
 | – | Mobile call bar | Sticky container, mobile only, 2 Buttons |
 
