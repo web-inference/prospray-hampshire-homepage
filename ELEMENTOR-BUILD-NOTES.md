@@ -101,3 +101,14 @@ Browsers draw the open list of a normal `<select>` themselves, so neither CSS no
 - **Closed field:** style it natively in Form → Style → Fields (background #F4F4F1, radius 8px, height 52px, focus border #B58A1F).
 - **Open list:** Elementor Pro → Custom Code, add the "Custom select" block from `assets/js/main.js` (the code that starts with `select[data-custom]`) in the footer, change its selector to `.elementor-field-type-select select`, and paste the `.cselect…` rules from the end of `assets/css/style.css` into Site Settings → Custom CSS.
 - If you skip this, the Form widget still works; only the open list looks like the browser default.
+
+## Legal pages and footer (UK)
+Footer bottom bar links to three pages, to be written once the client confirms details:
+1. **Privacy Policy** (UK GDPR). Needed because the form collects name, phone, email and address, and the footer has an email sign-up. Both now carry a consent line linking to it.
+2. **Terms & Conditions** (quotes, deposits and payment, cancellations, access to the property, colour matching, aftercare, complaints). Whatever guarantee the client offers belongs here once confirmed in writing.
+3. **Cookie Policy**, plus a cookie banner plugin, if analytics, ads, Google Maps embeds or reviews widgets are added.
+
+Also required by UK law on a company website: the registered company name, **company number**, **registered office address**, and a VAT number if registered. Add these to the footer as a short line once the client supplies them. (The old site's "Pro Spray" copyright line gave none of this.)
+
+Optional, low priority: an Accessibility statement.
+Slogan "Because quality matters" removed (it came from the mockup, not the live site).

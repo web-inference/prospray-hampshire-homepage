@@ -606,3 +606,13 @@ p { text-wrap: pretty; }
 .cselect__opt[aria-selected="true"] { background: var(--c-gold-tint); font-weight: 600; }
 .cselect__opt .fa-check { font-size: .8rem; color: var(--c-gold-deep); opacity: 0; }
 .cselect__opt[aria-selected="true"] .fa-check { opacity: 1; }
+
+/* Legal links + consent lines */
+.legal { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.legal a { color: #b6b6b3; }
+.legal a:hover { color: var(--c-gold-bright); }
+.consent { margin-top: 14px; font-size: .84rem; line-height: 1.5; color: var(--c-muted); text-align: center; }
+.consent a { color: var(--c-gold-deep); text-decoration: underline; text-underline-offset: 3px; }
+.consent--dark { margin-top: 12px; text-align: left; color: #8e8e8b; }
+.consent--dark a { color: var(--c-gold-bright); }
+@media (max-width: 767px) { .legal { gap: 8px 20px; } }
